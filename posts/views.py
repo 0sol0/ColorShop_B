@@ -13,11 +13,7 @@ from AutoPainter.app2 import trans1, trans2, sketchify2
 
 class PostView(APIView):
     def get(self, request):
-
-        posts = Post.objects.all().order_by("-likes")
-        posts=set(posts)
-        posts=list(posts)
-        posts= posts[:8]
+        posts = Post.objects.all()
         serializer = BestPostSerializer(posts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
